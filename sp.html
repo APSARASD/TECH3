@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Study Planner</title>
+    <link rel="stylesheet" href="style.css"> </head>
+
+<body>
+
+    <header>
+        <h1>Smart Study Planner</h1>
+        <p>Plan your studies effectively</p>
+    </header>
+
+    <div class="container">
+        <h2>Add Task</h2>
+        <form id="taskForm">
+            <label for="taskName">Task Name:</label>
+            <input type="text" id="taskName" required>
+
+            <label for="dueDate">Due Date:</label>
+            <input type="date" id="dueDate" required>
+
+            <label for="subject">Subject:</label>
+            <input type="text" id="subject">
+
+            <label for="priority">Priority:</label>
+            <select id="priority">
+                <option value="high">High</option>
+                <option value="medium">Medium</option>
+                <option value="low">Low</option>
+            </select>
+
+            <label for="notes">Notes:</label>
+            <textarea id="notes" rows="4"></textarea>
+
+            <button type="submit">Add Task</button>
+        </form>
+
+        <h2>Study Schedule</h2>
+        <table id="scheduleTable">
+            <thead>
+                <tr>
+                    <th>Task</th>
+                    <th>Due Date</th>
+                    <th>Subject</th>
+                    <th>Priority</th>
+                    <th>Notes</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+
+            </tbody>
+        </table>
+    </div>
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>
