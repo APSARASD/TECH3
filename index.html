@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Study Planner</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Smart Study Planner</h1>
+
+        <div class="input-area">
+            <input type="text" id="task-input" placeholder="Enter task">
+            <input type="datetime-local" id="deadline-input">
+            <button id="add-task-btn">Add Task</button>
+        </div>
+
+        <div class="task-list">
+            <h2>Tasks</h2>
+            <ul id="tasks-container">
+                </ul>
+        </div>
+
+        <div class="filter-area">
+            <label for="filter-by-date">Filter by Date:</label>
+            <input type="date" id="filter-by-date">
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
