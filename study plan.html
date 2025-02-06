@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Study Planner</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4; /* Light background color */
+            color: #333; /* Dark text color for better contrast */
+        }
+
+        header {
+            background-color: #6affeb; /* Blue header */
+            color: white;
+            padding: 1rem 0;
+            text-align: center;
+        }
+
+        h1 {
+           margin-bottom: 0.5rem; /* Add some space below the heading */
+        }
+
+        .container {
+            width: 80%;
+            margin: 20px auto;
+            background-color: white;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Add a subtle shadow */
+            border-radius: 8px; /* Rounded corners */
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        input[type="text"],
+        input[type="date"],
+        select,
+        textarea {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            box-sizing: border-box;
+            border-radius: 4px; /* Rounded corners for form fields */
+        }
+
+        button {
+            background-color: #6affeb;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            cursor: pointer;
+            border-radius: 4px; /* Rounded corners for buttons */
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #6affeb;
+            color: white;
+        }
+
+        /* Responsive design - makes the layout adapt to different screen sizes */
+        @media (max-width: 768px) {
+            .container {
+                width: 95%;
+            }
+
+            table {
+                font-size: 0.8rem; /* Smaller font on smaller screens */
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Smart Study Planner</h1>
+        <p>Plan your studies effectively</p>
+    </header>
+
+    <div class="container">
+        <h2>Add Task</h2>
+        <form id="taskForm">
+            <label for="taskName">Task Name:</label>
+            <input type="text" id="taskName" required>
+
+            <label for="dueDate">Due Date:</label>
+            <input type="date" id="dueDate" required>
+
+            <label for="subject">Subject:</label>
+            <input type="text" id="subject">
+
+            <label for="priority">Priority:</label>
+            <select id="priority">
+                <option value="high">High</option>
+                <option value="medium">Medium</option>
+                <option value="low">Low</option>
+            </select>
+
+            <label for="notes">Notes:</label>
+            <textarea id="notes" rows="4"></textarea>
+
+            <button type="submit">Add Task</button>
+        </form>
+
+        <h2>Study Schedule</h2>
+        <table id="scheduleTable">
+            <thead>
+                <tr>
+                    <th>Task</th>
+                    <th>Due Date</th>
+                    <th>Subject</th>
+                    <th>Priority</th>
+                    <th>Notes</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                </tbody>
+        </table>
+    </div>
+
+    <script>
+        const taskForm = document.getElementById('taskForm');
+        const scheduleTable = document.getElementById('scheduleTable').getElementsByTagName('tbody')[0];
+
+        taskForm.addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevent form from submitting normally
+
+            const taskName = document.getElementById('taskName').value;
+            const dueDate = document.getElementById('dueDate').value;
+            const subject = document.getElementById('subject').value;
+            const priority = document.getElementById('priority').value;
+            const notes = document.getElementById('notes').value;
+
+            // Add the task to the table
+            const newRow = scheduleTable.insertRow();
+            const cells = [taskName, dueDate, subject, priority, notes];
+            for (const cellText of cells) {
+                const newCell = newRow.insertCell();
+                newCell.textContent = cellText;
+            }
+
+            // Add delete button to the row
+            const actionsCell = newRow.insertCell();
+            const deleteButton = document.createElement('button');
+            deleteButton.textContent = 'Delete';
+            deleteButton.addEventListener('click', () => {
+                scheduleTable.deleteRow(newRow.rowIndex);
+            });
+            actionsCell.appendChild(deleteButton);
+
+
+            // Clear the form
+            taskForm.reset();
+        });
+    </script>
+
+</body>
+</html>
